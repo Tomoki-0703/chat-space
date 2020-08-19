@@ -2,8 +2,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|group_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|group|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
@@ -13,11 +13,10 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|name|string|null: false, unique: true|
 
 ### Association
 - has_many :messages
-- belongs_to :user
 - has_many :users,through::groups_users
 - has_many :groups_users
 
@@ -26,12 +25,11 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|Email|string|null: false,unique: true|
+|email|string|null: false,unique: true|
 |password|string|null: false|
 
 ### Association
 - has_many :messages
-- belongs_to :user
 - has_many :groups,through::groups_users
 - has_many :groups_users
 
@@ -41,8 +39,8 @@
 |------|----|-------|
 |content|text||
 |image|text||
-|user_id|references|null: false, foreign_key: true|
-|group_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|group|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
